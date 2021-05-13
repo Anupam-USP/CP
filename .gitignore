@@ -1,3 +1,4 @@
+.vscode/
 cp.code-workspace
 .DS_Store
 **/input.txt
