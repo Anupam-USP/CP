@@ -3,3 +3,5 @@ cp.code-workspace
 .DS_Store
 **/input.txt
 **/output.txt
+***/input.txt
+***/output.txt
