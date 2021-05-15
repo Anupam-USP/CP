@@ -2,10 +2,16 @@
 using namespace std;
 #define ll long long
 
-int ways(int n){
-    if(n<=3)
+int ways(int n, int k)
+{
+    if (n == 0)
         return 1;
-    return ways(n - 1) + ways(n - 4);
+    int ans = 0;
+    for (int i = 1; i <= k; i++)
+    {
+        ans += i * ways(n - i, k);
+    }
+    return ans;
 }
 
 int main()
@@ -14,8 +20,8 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 #endif
-    int n;
-    cin >> n;
-    cout << ways(n);
+    int n, k;
+    cin >> n >> k;
+    cout << ways(n, k);
     return 0;
 }
