@@ -33,18 +33,18 @@ int mpow(int base, int exp)
     return result;
 }
 
-ll ways(ll n, ll m)
+ll ways(ll n)
 {
-    if (n <= 3)
+    if (n <= 0)
         return 1;
-    return (ways(n - 1, m) + ways(n - m, m)) % MOD;
+    return ways(n - 1) + ((n - 1) * ways(n - 2));
 }
 
 void solve()
 {
     ll i, j, n, m;
-    cin >> n >> m;
-    cout << ways(n, m) % MOD << endl;
+    cin >> n;
+    cout << ways(n) << endl;
 }
 
 int main()

@@ -33,18 +33,19 @@ int mpow(int base, int exp)
     return result;
 }
 
-ll ways(ll n, ll m)
-{
-    if (n <= 3)
+ll cnt_binary(ll n){
+    if(n<=0)
         return 1;
-    return (ways(n - 1, m) + ways(n - m, m)) % MOD;
+    if(n<=2)
+        return n + 1;
+    return cnt_binary(n - 1) + cnt_binary(n - 2);
 }
 
 void solve()
 {
     ll i, j, n, m;
-    cin >> n >> m;
-    cout << ways(n, m) % MOD << endl;
+    cin >> n;
+    cout << cnt_binary(n) << endl;
 }
 
 int main()

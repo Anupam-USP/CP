@@ -32,19 +32,42 @@ int mpow(int base, int exp)
     }
     return result;
 }
+set<string, greater<string> > s;
 
-ll ways(ll n, ll m)
+void generate_bracs(char *out, int i, int open, int close, int n)
 {
-    if (n <= 3)
-        return 1;
-    return (ways(n - 1, m) + ways(n - m, m)) % MOD;
+    if (open == n and close == n)
+    {
+        if (open == close)
+        {
+            out[i] = '\0';
+            s.insert(out);
+            return;
+        }
+        return;
+    }
+
+    if (open < n)
+    {
+        out[i] = '(';
+        generate_bracs(out, i + 1, open + 1, close, n);
+    }
+    if (close < open)
+    {
+        out[i] = ')';
+        generate_bracs(out, i + 1, open, close + 1, n);
+    }
+    return;
 }
 
 void solve()
 {
-    ll i, j, n, m;
-    cin >> n >> m;
-    cout << ways(n, m) % MOD << endl;
+    int i, j, n, m;
+    char out[100];
+    cin >> n;
+    generate_bracs(out, 0, 0, 0, n);
+    for (auto i : s)
+        cout << i << endl;
 }
 
 int main()
@@ -58,7 +81,7 @@ int main()
 #endif
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
         solve();
