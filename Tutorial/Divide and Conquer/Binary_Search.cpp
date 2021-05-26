@@ -2,7 +2,7 @@
 using namespace std;
 #define ll long long
 
-int binarySear(int *a, int n, int key)
+int binarySearch(int *a, int n, int key)
 {
     int s = 0;
     int e = n - 1;
@@ -77,7 +77,7 @@ int main()
         cin >> a[i];
     int key;
     cin >> key;
-    cout << "Occurence: " << binarySear(a, n, key) << endl;
+    cout << "Occurence: " << binarySearch(a, n, key) << endl;
     cout << "First occurence: " << firsOcc(a, n, key) << endl;
     cout << "Last occurence: " << lastOcc(a, n, key) << endl
          << "\nUsing STL" << endl;
