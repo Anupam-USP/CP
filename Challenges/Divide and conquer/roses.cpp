@@ -33,54 +33,29 @@ int mpow(int base, int exp)
     return result;
 }
 
-int max3(int a, int b, int c){
-    return max(max(a, b), c);
-}
-
-int max_sum(ll *a, int l, int m, int n){
-    int tmp;
-    int cLeft = INT_MIN, cRight = INT_MIN;
-    tmp = 0;
-    for (int i = m; i >= l;i--){
-        tmp += a[i];
-        if(tmp>cLeft)
-            cLeft = tmp;
-    }
-    for (int i = m + 1; i <= n;i++){
-        tmp += a[i];
-        if(tmp<cRight)
-            cRight = tmp;
-    }
-
-    return max3(cLeft + cRight, cLeft, cRight);
-}
-
-int maxSubArrSum(ll *arr, int l, int h)
-{
-    // base case
-    if (l == h)
-        return arr[l];
-
-    // recursion case
-    int mid = (l + h) / 2;
-    int leftSum = maxSubArrSum(arr, l, mid);
-    int rightSum = maxSubArrSum(arr, mid + 1, h);
-    int centerSumMax = max_sum(arr, l, mid, h);
-
-    return max3(leftSum, rightSum, centerSumMax);
-}
-
 void solve()
 {
     ll i, j, n, m;
     cin >> n;
-    ll a[n];
+    int a[n];
     fo(i, n) cin >> a[i];
-    cout << maxSubArrSum(a, 0, n);
+    cin >> m;
+    sort(a, a + n);
+    int r1, r2, tmp = 0;
+    fo(i,n){
+        tmp = a[i];
+        int moneyLeft = m - tmp;
+        if(binary_search(a+i+1,a+n,moneyLeft)){
+            r1 = tmp;
+            r2 = moneyLeft;
+        }
+    }
+    cout << "Deepak should buy roses whose prices are " << r1 << " and " << r2 << "." << endl;
+
 }
 
 int main()
-{ 
+{
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
