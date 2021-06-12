@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define ll long long
 
 void Multiply(ll *a, ll &n, ll no)
 {
@@ -39,7 +40,7 @@ void BigFact(ll no)
     return;
 }
 
-ll main()
+int main()
 {
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
