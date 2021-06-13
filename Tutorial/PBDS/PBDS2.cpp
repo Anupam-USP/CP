@@ -3,12 +3,13 @@
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
 using namespace __gnu_pbds;
+#define ll long long
 
 typedef tree<ll, null_type, less<ll>, rb_tree_tag,
              tree_order_statistics_node_update>
     PBDS;
 
-ll main()
+int32_t main()
 {
 #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
