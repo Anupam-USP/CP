@@ -1,5 +1,10 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
 using namespace std;
+using namespace __gnu_pbds;
+
 #define ll long long
 #define ld long double
 #define fo(i, n) for (int i = 0; i < n; i++)
@@ -8,6 +13,7 @@ using namespace std;
 #define PI 3.1415926535897932384626
 #define MOD 1000000007
 #define endl "\n"
+
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pl;
 typedef vector<int> vi;
@@ -16,8 +22,10 @@ typedef vector<pii> vpii;
 typedef vector<pl> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
+#define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
 
 const int N = 3e5, M = N;
+#define all(x) (x).begin(), (x).end()
 
 int mpow(int base, int exp)
 {
@@ -35,14 +43,26 @@ int mpow(int base, int exp)
 
 void solve()
 {
-    ll i, j, n, m;
+    ll i, j, n = 0, m = 0;
     cin >> n;
-    ll length = 2 * n;
-    ll a[length];
-    fo(i, length) cin >> a[i];
-    sort(a, a + length);
-    fo(i, n) cout << a[i] << " " << a[i + n] << " ";
-    cout << endl;
+    vl a(n + 1);
+    fo(i, n)
+    {
+        cin >> a[i];
+        m += a[i];
+    }
+    if (m == n)
+        cout << 0 << endl;
+
+    else if (m > n)
+    {
+        cout << m - n << endl;
+    }
+    else if (m < n)
+    {
+        cout << 1 << endl;
+    }
+    return;
 }
 
 int main()
