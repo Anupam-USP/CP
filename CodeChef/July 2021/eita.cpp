@@ -1,5 +1,10 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
 using namespace std;
+using namespace __gnu_pbds;
+
 #define ll long long
 #define ld long double
 #define fo(i, n) for (int i = 0; i < n; i++)
@@ -17,9 +22,10 @@ typedef vector<pii> vpii;
 typedef vector<pl> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
+#define ordered_set tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update>
 
 const int N = 3e5, M = N;
-#define all(x) (x).begin(), (x).end()
+#define all(x) (x).begin(),(x).end()
 
 int mpow(int base, int exp)
 {
@@ -37,24 +43,12 @@ int mpow(int base, int exp)
 
 void solve()
 {
-    ll D, d, p, q;
-    cin >> D >> d >> p >> q;
-    ll ans = 0, i = 0, cnt = 0;
-    // while (i < D)
-    // {
-    //     ans += (cnt * q);
-    //     i++;
-    //     if (i % d == 0)
-    //         cnt++;
-    // }
-    ll pa = D / d, r = D % d;
-    for (int i = 0; i < pa; i++)
-    {
-        ans += (i * d * q);
-    }
-    ans += (D * p);
-    ans += (pa * r * q);
-    cout << ans << endl;
+    ll d, x, y, z;
+    cin >> d >> x >> y >> z;
+    ll tmp1 = 7 * x;
+    ll tmp2 = (d * y) + ((7 - d) * z);
+    cout << max(tmp1, tmp2) << endl;
+    return;
 }
 
 int main()
